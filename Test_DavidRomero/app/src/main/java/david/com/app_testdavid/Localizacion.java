@@ -45,6 +45,8 @@ public class Localizacion extends ActionBarActivity implements LocationListener 
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setIcon(new ColorDrawable(getResources().getColor(android.R.color.transparent)));
         getSupportActionBar().setDisplayShowTitleEnabled(true);
+        getSupportActionBar().setTitle("Localization Earthquake");
+
 
 
 

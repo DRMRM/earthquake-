@@ -40,7 +40,7 @@
                 android:layout_height="fill_parent"
                 android:layout_marginLeft="15sp"
                 android:layout_marginRight="15sp"
-                android:layout_marginTop="-50sp">
+                android:layout_marginTop="-68sp">
 
 
                 <TextView
@@ -65,7 +65,7 @@
                     android:text="Large Text"
                     android:id="@+id/tex_id"
                     android:textStyle="bold|italic"
-                    android:textColor="@color/android_darkpink"
+                    android:textColor="@color/android_darkorange"
                     android:textSize="15sp"
                     android:layout_gravity="left"
                     android:gravity="left"/>
@@ -79,7 +79,7 @@
                     android:layout_gravity="center_horizontal"
                     android:textSize="25sp"
                     android:textStyle="bold|italic"
-                    android:textColor="@color/android_blue"
+                    android:textColor="@color/android_darkpink"
 
                     />
 
@@ -130,8 +130,8 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/bordes"
                     android:layout_marginTop="20sp"
-                    android:orientation="vertical">
-
+                    android:orientation="vertical"
+                    android:layout_marginBottom="10sp">
                     <TextView
                         android:layout_margin="10sp"
                         android:layout_width="wrap_content"
@@ -144,31 +144,6 @@
                         android:gravity="center"
                         />
 
-
-                    <TextView
-                        android:id="@+id/tex_code"
-
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Detail Earthquake "
-                        android:textColor="@color/android_blue_dark"
-                        android:textSize="15sp"
-                        android:textStyle="bold"
-                        android:layout_gravity="left"
-                        android:gravity="left"
-                        />
-                    <TextView
-                        android:id="@+id/tex_magType"
-
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Detail Earthquake "
-                        android:textColor="@color/android_blue_dark"
-                        android:textSize="15sp"
-                        android:textStyle="bold"
-                        android:layout_gravity="right"
-                        android:gravity="right"
-                        />
                     <TextView
                         android:id="@+id/tex_type"
 
@@ -180,7 +155,43 @@
                         android:textStyle="bold"
                         android:layout_gravity="left"
                         android:gravity="left"
+                        android:layout_marginLeft="15sp"
                         />
+
+                    <View style ="@style/division"/>
+
+
+                        <TextView
+                            android:id="@+id/tex_code"
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Detail Earthquake "
+                            android:textColor="@color/android_blue_dark"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:layout_marginLeft="15sp"
+                            />
+                    <View style ="@style/division"/>
+                        <TextView
+                            android:id="@+id/tex_magType"
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Detail Earthquake "
+                            android:textColor="@color/android_blue_dark"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            android:layout_gravity="left"
+                            android:gravity="left"
+                            android:layout_marginLeft="15sp"
+                            />
+                    <View style ="@style/division"/>
+
+
+
                     </LinearLayout>
 
 

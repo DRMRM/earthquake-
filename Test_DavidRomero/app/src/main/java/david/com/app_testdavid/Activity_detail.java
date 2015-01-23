@@ -1,7 +1,9 @@
 package david.com.app_testdavid;
 
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 import david.com.app_testdavid.utils.Utils;
@@ -33,6 +35,14 @@ public class Activity_detail extends ActionBarActivity{
         tex_type=(TextView)findViewById(R.id.tex_type);
 
 
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setIcon(new ColorDrawable(getResources().getColor(android.R.color.transparent)));
+        getSupportActionBar().setDisplayShowTitleEnabled(true);
+        getSupportActionBar().setTitle("Detail Earthquake");
+
+
 
 
 
@@ -54,11 +64,11 @@ public class Activity_detail extends ActionBarActivity{
 
 
             tex_title.setText(title);
-            tex_id.setText("ID:\n"+id);
+            tex_id.setText("ID:  "+id);
             tex_place.setText("Place :\n"+place);
-            tex_mag.setText("Magnitude :\n"+mag);
+            tex_mag.setText("Magnitude :  "+mag);
             tex_alert.setText("Alert :"+alert);
-            tex_tsu.setText("Tsunami :\n"+tsunami);
+            tex_tsu.setText("Tsunami :  "+tsunami);
 
             tex_code.setText("Code :\n"+code);
             tex_magType.setText("Magnitude Type :\n"+magType);
@@ -68,4 +78,17 @@ public class Activity_detail extends ActionBarActivity{
 
 
     }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case android.R.id.home:
+
+                onBackPressed();
+            default:
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 }
