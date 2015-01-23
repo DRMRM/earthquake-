@@ -103,34 +103,13 @@ if(Utils.isConected(HomeActivity.this)){
 
     }
     public void getDatasMain(ArrayList<Features>datas){
-
-
-
-
-
-
-
-
-
-
         MyExpandableListItemAdapter  mExpandableListItemAdapter = new MyExpandableListItemAdapter(this,datas);
-
-
-
         AlphaInAnimationAdapter alphaInAnimationAdapter = new AlphaInAnimationAdapter(mExpandableListItemAdapter);
-
         alphaInAnimationAdapter.setAbsListView(list_home);
-
         assert alphaInAnimationAdapter.getViewAnimator() != null;
         alphaInAnimationAdapter.getViewAnimator().setInitialDelayMillis(INITIAL_DELAY_MILLIS);
-
-
-
-                list_home.setAdapter(alphaInAnimationAdapter);
-
-
+        list_home.setAdapter(alphaInAnimationAdapter);
         mExpandableListItemAdapter.notifyDataSetChanged();
-
     }
 
     @Override
