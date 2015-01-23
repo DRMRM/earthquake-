@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Test_DavidRomero.iml" filepath="$PROJECT_DIR$/Test_DavidRomero.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/library_parallaxScroll/library_parallaxScroll.iml" filepath="$PROJECT_DIR$/library_parallaxScroll/library_parallaxScroll.iml" />
       <module fileurl="file://$PROJECT_DIR$/library_shimmer/library_shimmer.iml" filepath="$PROJECT_DIR$/library_shimmer/library_shimmer.iml" />
       <module fileurl="file://$PROJECT_DIR$/library_stickylist/library_stickylist.iml" filepath="$PROJECT_DIR$/library_stickylist/library_stickylist.iml" />
     </modules>

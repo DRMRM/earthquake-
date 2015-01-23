@@ -26,5 +26,6 @@ dependencies {
     compile project(':library_stickylist')
     compile project(':library_shimmer')
     compile 'com.google.android.gms:play-services:6.5.87'
+    compile project(':library_parallaxScroll')
 }
 

@@ -1,1 +1,1 @@
-include ':app', ':library_stickylist', ':library_shimmer'
+include ':app', ':library_stickylist', ':library_shimmer', ':library_parallaxScroll'
