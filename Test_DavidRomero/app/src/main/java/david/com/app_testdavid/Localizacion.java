@@ -3,6 +3,7 @@ package david.com.app_testdavid;
 
 
 import android.content.Context;
+import android.graphics.Point;
 import android.graphics.drawable.ColorDrawable;
 import android.location.Location;
 import android.location.LocationListener;
@@ -10,8 +11,14 @@ import android.location.LocationManager;
 import android.os.Bundle;
 
 import android.support.v7.app.ActionBarActivity;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -21,7 +28,11 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.ArrayList;
 
+import david.com.app_testdavid.adapters.Adapter_locations_list;
+import david.com.app_testdavid.beans.Features;
+import david.com.app_testdavid.beans.Propierties;
 
 
 /*Clase que se encarga de todas las funciones de localizacion*/
@@ -33,6 +44,15 @@ public class Localizacion extends ActionBarActivity implements LocationListener 
 
     double lat, longi;
     String title,desc;
+    ListView list_detail;
+
+    LinearLayout contenedor_lista,contenedor_map;
+    Point size;
+    Adapter_locations_list adapter;
+    ArrayList<Features>fets;
+    Features fet;
+
+
 
 
     @Override
@@ -46,8 +66,20 @@ public class Localizacion extends ActionBarActivity implements LocationListener 
         getSupportActionBar().setIcon(new ColorDrawable(getResources().getColor(android.R.color.transparent)));
         getSupportActionBar().setDisplayShowTitleEnabled(true);
         getSupportActionBar().setTitle("Localization Earthquake");
+        size=new Point();
+
+        list_detail=(ListView)findViewById(R.id.list_detail);
+        contenedor_lista=(LinearLayout)findViewById(R.id.contenedor_lista);
+        contenedor_map=(LinearLayout)findViewById(R.id.contenedor_map);
 
 
+        DisplayMetrics displaymetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
+        int height = displaymetrics.heightPixels;
+        int width = displaymetrics.widthPixels;
+
+        LinearLayout.LayoutParams ladderFLParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, (height/2));
+        contenedor_map.setLayoutParams(ladderFLParams);
 
 
         try {
@@ -74,18 +106,31 @@ public class Localizacion extends ActionBarActivity implements LocationListener 
             longi=Double.parseDouble(bundle.getString("longi"));
             title=bundle.getString("title");
             desc=bundle.getString("desc");
-
-
             centraMapa();
-
             showmarker(title, desc, lat, longi);
             Log.e("Latitud    longitud", "Latitud :"+ lat + "Longitud :" +longi);
         }else {
 setUserLocation();
         }
+        fets=Features.getInstance().getFets();
+
+        if(fets.size()>0){
+            adapter=new Adapter_locations_list();
+
+            adapter.setData(fets,Localizacion.this);
+            list_detail.setAdapter(adapter);
+
+            list_detail.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    fet=fets.get(position);
+                    double latitude=Double.parseDouble(fet.getGeometry().getCoordinates().getLatitude()), longitude=Double.parseDouble(fet.getGeometry().getCoordinates().getLongitude());
+                    showmarker(fet.getPropierties().getTitle(),fet.getPropierties().getMag(),latitude,longitude);
+                }
+            });
 
 
-
+        }
 
 
 	}
@@ -222,14 +267,14 @@ setUserLocation();
 
 	//************Muestra los marcadores que se visualizan en los mapas del dispositivo***************///
 
-	private void showmarker(String title, String desc, double a1,double a2) {
+	private void showmarker(String title, String desc, double latitude,double longitude) {
+        _mapa.clear();
 		_mapa.addMarker(new MarkerOptions()
-		.position(new LatLng(a1, a2))
+		.position(new LatLng(latitude, longitude))
 		.title(title)
 		.snippet(desc)
 		.icon(BitmapDescriptorFactory.fromResource(R.drawable.pin_map)));
-
-        LatLng posicion = new LatLng(a1, a2);
+        LatLng posicion = new LatLng(latitude, longitude);
         _mapa.moveCamera(CameraUpdateFactory.newLatLngZoom(posicion, 4.5f));
 
 	}

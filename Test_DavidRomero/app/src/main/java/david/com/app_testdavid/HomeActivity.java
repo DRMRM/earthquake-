@@ -161,31 +161,28 @@ if(Utils.isConected(HomeActivity.this)){
             super.onPostExecute(aVoid);
 
             String text="";
+           ArrayList<Propierties>prs=new ArrayList<Propierties>();
+           Propierties p=null;
 
-            for(int i=0; i<feature.size();i++){
-
-                text+="\n \n Features: Propierties : "+ feature.get(i).getPropierties().getType() + "\nPlace : "+ feature.get(i).getPropierties().getPlace() + "\nTitle : "+feature.get(i).getPropierties().getTitle()
-                +"Geometry Type :"+feature.get(i).getGeometry().getType()+
-                "\n Latitud "+ feature.get(i).getGeometry().getCoordinates().getLatitude()
-                +"\n Longitud "+ feature.get(i).getGeometry().getCoordinates().getLongitude()+
-                "\n Altitud "+ feature.get(i).getGeometry().getCoordinates().getAltitude();
-
-            }
+            if(feature.size()>0){
 
             try { tx_title_home.setText(metadata.getTitle()); }catch (Exception e){}
             try { tx_home_earthquake.setText("Count earthquake : "+metadata.getCount()); }catch (Exception e){}
-
-
-
             getDatasMain(feature);
+
+                for (int i=0; i<feature.size();i++){
+                    p=feature.get(i).getPropierties();
+                    prs.add(p);
+                }
+                Features.getInstance().setFets(feature);
+
+
+            }else {
+                Utils.createAlert(HomeActivity.this,"There are not data");
+            }
 
 
         }
-
-
-
-
-
 
     }
 }

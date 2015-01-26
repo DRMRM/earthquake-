@@ -15,6 +15,16 @@ public class Features {
         return _instance;
     }
 
+    ArrayList<Features>fets;
+
+    public ArrayList<Features> getFets() {
+        return fets;
+    }
+
+    public void setFets(ArrayList<Features> fets) {
+        this.fets = fets;
+    }
+
     private String type,id;
    private Propierties propierties;
     private Geometry geometry;
